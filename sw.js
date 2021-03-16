@@ -51,8 +51,6 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
     const responseStrategy = caches.match( e.request )
         .then( response => {
-        	console.log('Response', response);
-
             if ( response ){
             	return response
             }
