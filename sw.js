@@ -34,7 +34,7 @@ self.addEventListener('install', e =>{
 	const cacheInmutable = caches.open( INMUTABLE_CACHE ).then( cache =>
 		cache.addAll( APP_SHELL_INMUTABLE ));
 
-	e.waitUntil(Promise.all([cacheStatic]));
+	e.waitUntil(Promise.all([cacheStatic , cacheInmutable]));
 });
 
 self.addEventListener('activate', e => {
@@ -57,8 +57,7 @@ self.addEventListener('fetch', e => {
             }
             else{
 	            return fetch( e.request ).then( newResponse => {
-	            	let dataNueva = updateDynamicCache(DYNAMIC_CACHE, e.request, newResponse);
-	            	return dataNueva;
+	            	return updateDynamicCache(DYNAMIC_CACHE, e.request, newResponse);
 	            });
         	}
 
