@@ -7,7 +7,6 @@ const INMUTABLE_CACHE = 'inmutable-v1';
 
 
 const APP_SHELL = [
-    '/twittor-pwa/',
 	'index.html',
 	'css/style.css',
 	'img/favicon.ico',
